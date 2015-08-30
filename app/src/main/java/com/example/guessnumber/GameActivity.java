@@ -2,6 +2,7 @@ package com.example.guessnumber;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -70,6 +71,10 @@ public class GameActivity extends AppCompatActivity {
         Game.CompareResult result = mGame.submitGuess(guessNumber);
 
         if (result == Game.CompareResult.EQUAL) {
+
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.applause);
+            mp.start();
+
             mResultTextView.setText("ถูกต้องนะครับ");
             mGuessNumberTextView.setBackgroundResource(R.color.correct_guess);
 
