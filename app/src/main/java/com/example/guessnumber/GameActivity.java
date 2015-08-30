@@ -1,5 +1,7 @@
 package com.example.guessnumber;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -70,6 +72,29 @@ public class GameActivity extends AppCompatActivity {
         if (result == Game.CompareResult.EQUAL) {
             mResultTextView.setText("ถูกต้องนะครับ");
             mGuessNumberTextView.setBackgroundResource(R.color.correct_guess);
+
+            String msg = String.format(
+                    "จำนวนครั้งที่ทาย: %d",
+                    mGame.getTotalGuesses()
+            );
+
+            new AlertDialog.Builder(this)
+                    .setTitle("สรุปผล")
+                    .setMessage(msg)
+                    .setCancelable(false)
+                    .setPositiveButton("เริ่มเกมใหม่", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            newGame();
+                        }
+                    })
+                    .setNegativeButton("กลับหน้าหลัก", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .show();
         }
         else if (result == Game.CompareResult.TOO_BIG) {
             mResultTextView.setText(guessNumber + " มากไป");
