@@ -1,8 +1,11 @@
 package com.example.guessnumber;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +22,24 @@ public class MainActivity extends AppCompatActivity {
         playGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+/*
+                //ตัวอย่างการแสดงไดอะล็อกแบบลิสต์ (list)
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("เลือกระดับความยาก")
+                        .setItems(
+                                new String[]{"ง่าย", "ยาก"},
+
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Log.d("MainActivity", "You selected " + which);
+                                    }
+                                }
+                        )
+                        .show();
+*/
+
                 Intent intent = new Intent(
                         MainActivity.this,
                         GameActivity.class
